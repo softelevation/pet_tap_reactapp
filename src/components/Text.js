@@ -35,6 +35,8 @@ const componentStyles = () => {
     // position
     center: {textAlign: 'center'},
     right: {textAlign: 'right'},
+    left: {textAlign: 'left'},
+    capitalize: {textTransform: 'capitalize'},
     // colors
     primary: {color: light.primary},
     secondary: {color: light.secondary},
@@ -98,6 +100,8 @@ const CustomText = ({
   underline,
   margin,
   errorColor,
+  left,
+  capitalize,
   ...props
 }) => {
   const styles = componentStyles();
@@ -169,6 +173,7 @@ const CustomText = ({
     right && styles.right,
     color && styles[color],
     color && !styles[color] && {color},
+    left && styles.left,
     // color shortcuts
     accent && styles.accent,
     primary && styles.primary,
@@ -182,6 +187,7 @@ const CustomText = ({
     underline && styles.underline,
     errorColor && styles.errorColor,
     margin && {...handleMargins()},
+    capitalize && styles.capitalize,
     style, // rewrite predefined styles
   ];
   return (

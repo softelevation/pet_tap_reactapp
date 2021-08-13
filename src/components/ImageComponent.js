@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ResponsiveImage from 'react-native-responsive-image';
-import images from '../assets';
+import {images} from '../assets/images';
 
 const ImageComponent = ({name, height, width, isURL, color, radius}) => {
   return (

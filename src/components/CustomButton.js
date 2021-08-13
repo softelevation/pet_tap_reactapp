@@ -9,9 +9,7 @@ import {light} from './theme/colors';
 
 const componentStyles = () => {
   return StyleSheet.create({
-    block: {
-      flex: 1,
-    },
+    block: {},
     baseline: {
       alignItems: 'baseline',
     },
@@ -58,7 +56,7 @@ const componentStyles = () => {
   });
 };
 
-const Block = ({
+const CustomButton = ({
   safearea,
   padding,
   margin,
@@ -316,4 +314,4 @@ const Block = ({
   );
 };
 
-export default Block;
+export default CustomButton;
