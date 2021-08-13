@@ -12,7 +12,7 @@ const Home = () => {
     <ScrollView bounces={false}>
       {/* <SafeAreaView /> */}
       <ImageBackground
-        source={require('../../../src/assets/bg.png')}
+        source={require('../../../src/assets/icons/bg.png')}
         style={{
           height: Dimensions.get('window').height,
           width: Dimensions.get('window').width + 10,
