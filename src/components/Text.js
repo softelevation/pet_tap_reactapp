@@ -1,7 +1,18 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 import {light} from './theme/colors';
-import {h1, h2, h3, title, body, caption, header, bold} from './theme/fontsize';
+import {
+  h1,
+  h2,
+  h3,
+  title,
+  body,
+  caption,
+  header,
+  bold,
+  lightFont,
+  GothamBold,
+} from './theme/fontsize';
 
 const componentStyles = () => {
   return StyleSheet.create({
@@ -21,13 +32,13 @@ const componentStyles = () => {
       fontFamily: bold,
     },
     semibold: {
-      fontWeight: '700',
+      fontFamily: GothamBold,
     },
     medium: {
       fontWeight: '500',
     },
     light: {
-      fontWeight: '200',
+      fontFamily: lightFont,
     },
     underline: {
       textDecorationLine: 'underline',

@@ -13,8 +13,12 @@ import {
   ImageComponent,
 } from '../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {useNavigation} from '@react-navigation/native';
+import {RouteConstants} from '../../utils/constants';
 
 const PetTapForm = () => {
+  const {navigate, goBack} = useNavigation();
+
   return (
     <Block safearea primary>
       <KeyboardAwareScrollView>
@@ -68,6 +72,7 @@ const PetTapForm = () => {
             space="between"
             row>
             <CustomButton
+              onPress={() => goBack()}
               center
               padding={[heightPercentageToDP(2), widthPercentageToDP(10)]}
               color="#E9138C"
@@ -88,6 +93,7 @@ const PetTapForm = () => {
               </Text>
             </CustomButton>
             <CustomButton
+              onPress={() => navigate(RouteConstants.NFCMANAGER)}
               center
               row
               padding={[heightPercentageToDP(2), widthPercentageToDP(10)]}
@@ -99,9 +105,14 @@ const PetTapForm = () => {
                 uppercase
                 center
                 color="white">
-                Next {'>'}
+                Next
               </Text>
               <Block
+                style={[
+                  {
+                    transform: [{rotate: '180deg'}],
+                  },
+                ]}
                 flex={false}
                 margin={[-heightPercentageToDP(0.2), 0, 0, 0]}>
                 <ImageComponent name="less" width={9} height={9} />

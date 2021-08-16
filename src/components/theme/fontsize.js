@@ -27,3 +27,7 @@ export const w6 = wp(6);
 
 export const bold =
   Platform.OS === 'ios' ? 'Bebas Neue Rounded' : 'Bebas Neue Rounded';
+export const lightFont =
+  Platform.OS === 'ios' ? 'GothamRounded-Light' : 'GothamRounded-Light';
+export const GothamBold =
+  Platform.OS === 'ios' ? 'GothamRounded-Bold' : 'GothamRounded-Bold';

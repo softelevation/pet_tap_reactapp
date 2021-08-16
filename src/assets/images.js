@@ -5,4 +5,5 @@ export const images = {
   phone: require('./icons/phone.png'),
   address: require('./icons/address.png'),
   message: require('./icons/message.png'),
+  logo: require('./icons/logo.png'),
 };

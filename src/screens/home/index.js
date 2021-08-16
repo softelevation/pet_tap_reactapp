@@ -7,7 +7,10 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import {widthPercentageToDP} from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP,
+  widthPercentageToDP,
+} from 'react-native-responsive-screen';
 import {Text} from '../../components/index';
 import {light} from '../../components/theme/colors';
 import {RouteConstants} from '../../utils/constants';
@@ -44,11 +47,14 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   button: {
-    borderWidth: 5,
-    paddingVertical: 35,
+    borderWidth: 4,
     paddingHorizontal: 10,
     borderColor: '#E9138C',
     width: widthPercentageToDP(70),
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: heightPercentageToDP(2.5),
+    paddingBottom: heightPercentageToDP(2),
   },
   image: {
     height: Dimensions.get('window').height,
@@ -58,20 +64,22 @@ const styles = StyleSheet.create({
     paddingBottom: 80,
   },
   onlineButton: {
-    borderWidth: 5,
-    paddingVertical: 10,
+    borderWidth: 4,
     paddingHorizontal: 10,
     borderColor: '#E9138C',
     width: widthPercentageToDP(70),
-    marginTop: 80,
+    marginTop: heightPercentageToDP(10),
+    paddingTop: heightPercentageToDP(1.5),
+    paddingBottom: heightPercentageToDP(1),
   },
   contactButton: {
-    borderWidth: 5,
-    paddingVertical: 10,
+    borderWidth: 4,
     paddingHorizontal: 10,
     borderColor: '#E9138C',
     width: widthPercentageToDP(70),
-    marginTop: 10,
+    marginTop: heightPercentageToDP(2),
+    paddingTop: heightPercentageToDP(1.5),
+    paddingBottom: heightPercentageToDP(1),
   },
 });
 
