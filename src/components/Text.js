@@ -7,7 +7,7 @@ const componentStyles = () => {
   return StyleSheet.create({
     // default style
     text: {
-      fontSize: 20,
+      fontSize: 14,
       color: '#231F20',
     },
     // variations

@@ -1,21 +1,19 @@
 import React from 'react';
 import {
-  Text,
   ImageBackground,
   TouchableOpacity,
   Dimensions,
   ScrollView,
 } from 'react-native';
-
+import {Text} from '../../components/index';
 const Home = () => {
   return (
     <ScrollView bounces={false}>
-      {/* <SafeAreaView /> */}
       <ImageBackground
         source={require('../../../src/assets/icons/bg.png')}
         style={{
           height: Dimensions.get('window').height,
-          width: Dimensions.get('window').width + 10,
+          width: Dimensions.get('window').width,
           justifyContent: 'flex-end',
           alignItems: 'center',
           paddingBottom: 80,
@@ -68,14 +66,7 @@ const Home = () => {
             width: 280,
             marginTop: 10,
           }}>
-          <Text
-            style={{
-              textTransform: 'uppercase',
-              color: '#E9138C',
-              fontSize: 30,
-              fontWeight: 'bold',
-              textAlign: 'center',
-            }}>
+          <Text center semibold uppercase secondary size={30}>
             contact
           </Text>
         </TouchableOpacity>
