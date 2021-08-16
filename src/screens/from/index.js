@@ -1,6 +1,6 @@
 import React from 'react';
 import {TextInput, style, ImageBackground} from 'react-native';
-import {Block, Text, CustomButton, ImageComponent} from '../../components';
+import {Block, Text, CustomButton} from '../../components';
 
 const form = () => {
   return (
