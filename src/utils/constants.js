@@ -5,4 +5,5 @@ export const RouteConstants = {
   SUCCESS: 'Success',
   PET_DETAILS: 'PetDetails',
   SPLASH: 'Splash',
+  CAMERASCREEN: 'Camera',
 };

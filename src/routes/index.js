@@ -10,6 +10,7 @@ import {RouteConstants} from '../utils/constants';
 import Success from '../screens/endpage';
 import PetDetails from '../screens/Landing';
 import Splash from '../screens/splash';
+import Camera from '../screens/camera';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,7 @@ function Routes() {
         <Stack.Screen name={RouteConstants.PETTAPFORM} component={PetTapForm} />
         <Stack.Screen name={RouteConstants.NFCMANAGER} component={Nfc} />
         <Stack.Screen name={RouteConstants.SUCCESS} component={Success} />
+        <Stack.Screen name={RouteConstants.CAMERASCREEN} component={Camera} />
         <Stack.Screen
           name={RouteConstants.PET_DETAILS}
           component={PetDetails}

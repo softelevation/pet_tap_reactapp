@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   onlineButton: {
-    borderWidth: 5,
+    borderWidth: 3,
     paddingVertical: 10,
     paddingHorizontal: 10,
     borderColor: '#E9138C',
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     marginTop: 80,
   },
   contactButton: {
-    borderWidth: 5,
+    borderWidth: 3,
     paddingVertical: 10,
     paddingHorizontal: 10,
     borderColor: '#E9138C',

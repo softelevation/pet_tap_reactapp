@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Block, ImageComponent} from '../../components';
