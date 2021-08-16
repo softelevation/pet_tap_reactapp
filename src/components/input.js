@@ -18,14 +18,13 @@ const componentStyles = () => {
     input: {
       paddingVertical:
         Platform.OS === 'ios'
-          ? heightPercentageToDP(1)
+          ? heightPercentageToDP(1.5)
           : heightPercentageToDP(0.3),
       paddingHorizontal: widthPercentageToDP(3),
-      borderWidth: 0.5,
-      borderColor: '#000',
-      borderRadius: 5,
+      borderWidth: 2,
+      borderColor: '#231F20',
       fontSize: 14,
-      color: '#000',
+      color: '#231F20',
       backgroundColor: '#fff',
     },
     toggle: {
@@ -63,13 +62,13 @@ const Input = ({
     <Block flex={false}>
       {label ? (
         <Text
+          bold
+          secondary={!error}
           errorColor={errorText}
-          size={14}
+          size={20}
           center={center ? true : false}
           style={styles.label}
-          black={!error}
-          accent={error}
-          color="#636363">
+          accent={error}>
           {label}
         </Text>
       ) : null}
@@ -141,7 +140,7 @@ const Input = ({
         editable={editable}
         autoCorrect={false}
         keyboardType={inputType}
-        placeholderTextColor={errorText ? 'red' : '#000000'}
+        placeholderTextColor={errorText ? 'red' : '#A7A9AC'}
         {...rest}
       />
       {errorText && error && (

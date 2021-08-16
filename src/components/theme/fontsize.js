@@ -1,3 +1,4 @@
+import {Platform} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -23,3 +24,6 @@ export const w3 = wp(3);
 export const w4 = wp(4);
 export const w5 = wp(5);
 export const w6 = wp(6);
+
+export const bold =
+  Platform.OS === 'ios' ? 'Bebas Neue Rounded' : 'Bebas Neue Rounded';

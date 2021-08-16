@@ -14,6 +14,6 @@ export const light = {
   subtitleColor: '#00000091',
   warning: '#EE3254',
   accent: '#B92D00',
-  darkColor: '#191E2D',
+  darkColor: '#231F20',
   starColor: '#FDCC0D',
 };

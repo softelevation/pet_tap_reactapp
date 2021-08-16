@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
 import {light} from './theme/colors';
-import {h1, h2, h3, title, body, caption, header} from './theme/fontsize';
+import {h1, h2, h3, title, body, caption, header, bold} from './theme/fontsize';
 
 const componentStyles = () => {
   return StyleSheet.create({
@@ -18,7 +18,7 @@ const componentStyles = () => {
       fontWeight: 'normal',
     },
     bold: {
-      fontWeight: 'bold',
+      fontFamily: bold,
     },
     semibold: {
       fontWeight: '700',

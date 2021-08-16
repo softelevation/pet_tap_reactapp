@@ -9,7 +9,7 @@ const componentStyles = () => {
     button: {
       borderRadius: 10,
       justifyContent: 'center',
-      marginVertical: t2,
+      marginVertical: t1,
       paddingVertical: t1 * 1.5,
     },
     shadow: {
@@ -17,9 +17,6 @@ const componentStyles = () => {
       shadowOffset: {width: 0, height: 2},
       shadowOpacity: 0.1,
       shadowRadius: 10,
-    },
-    disabledButton: {
-      backgroundColor: '#00000052',
     },
     circular: {
       borderRadius: 20,
@@ -42,8 +39,9 @@ const componentStyles = () => {
     transparent: {
       backgroundColor: '#fff',
       paddingVertical: t1 * 1.5,
-      borderColor: light.secondary,
-      borderWidth: 1,
+      borderColor: light.darkColor,
+      borderWidth: 2,
+      borderRadius: 0,
     },
   });
 };
@@ -84,12 +82,12 @@ const Button = ({
     return <Block style={buttonStyles}>{icon}</Block>;
   }
 
-  const colorType = (type) => {
+  const colorType = type => {
     switch (type) {
       case 'secondary':
         return '#fff';
       case 'transparent':
-        return light.secondary;
+        return light.darkColor;
       case 'primary':
         return '#fff';
     }
@@ -104,7 +102,7 @@ const Button = ({
       {isLoading ? (
         <ActivityIndicator size="small" color="#ffffff" />
       ) : (
-        <Text center bold h1 size={size || 17} color={colorType(color)}>
+        <Text center bold h1 size={size || 20} color={colorType(color)}>
           {children}
         </Text>
       )}
