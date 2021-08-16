@@ -17,7 +17,7 @@ import {useNavigation} from '@react-navigation/native';
 import {RouteConstants} from '../../utils/constants';
 
 const PetTapForm = () => {
-  const {navigate, goBack} = useNavigation();
+  const {navigate} = useNavigation();
 
   return (
     <Block safearea primary>
@@ -61,15 +61,5 @@ const PetTapForm = () => {
     </Block>
   );
 };
-
-const styles = StyleSheet.create({
-  image: {
-    height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    paddingBottom: 80,
-  },
-});
 
 export default PetTapForm;
