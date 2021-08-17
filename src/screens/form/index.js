@@ -18,6 +18,8 @@ import {RouteConstants} from '../../utils/constants';
 import ImagePicker from 'react-native-image-crop-picker';
 
 export const PetTapForm = () => {
+  const {navigate, goBack} = useNavigation();
+
   const takePhotoFromCamera = () => {
     ImagePicker.openCamera({
       width: 300,
@@ -25,6 +27,7 @@ export const PetTapForm = () => {
       cropping: true,
     }).then(image => {
       console.log(image);
+      navigate(RouteConstants.CAMERASCREEN);
     });
   };
   const choosePhoto = () => {
@@ -34,10 +37,9 @@ export const PetTapForm = () => {
       cropping: true,
     }).then(image => {
       console.log(image);
+      navigate(RouteConstants.CAMERASCREEN);
     });
   };
-
-  // const {navigate, goBack} = useNavigation();
 
   return (
     <Block safearea primary>
