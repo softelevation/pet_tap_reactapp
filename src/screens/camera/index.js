@@ -15,15 +15,21 @@ const Camera = ({route}) => {
   return (
     <Block primary safearea>
       <Block
+        margin={[heightPercentageToDP(5), 0, 0]}
         center
         alignSelf="center"
         flex={false}
         style={{height: 200, width: 200}}
         borderRadius={200}
         color="#C8C8C8"
-        margin={[heightPercentageToDP(2), 0]}
       />
-      <Text uppercase color="#E9138C" bold size={27} center>
+      <Text
+        margin={[heightPercentageToDP(4), 0, heightPercentageToDP(2)]}
+        uppercase
+        color="#E9138C"
+        bold
+        size={27}
+        center>
         drag to position
       </Text>
       <Block
