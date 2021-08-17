@@ -15,9 +15,29 @@ import {
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useNavigation} from '@react-navigation/native';
 import {RouteConstants} from '../../utils/constants';
+import ImagePicker from 'react-native-image-crop-picker';
 
-const PetTapForm = () => {
-  const {navigate, goBack} = useNavigation();
+export const PetTapForm = () => {
+  const takePhotoFromCamera = () => {
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+    });
+  };
+  const choosePhoto = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+    });
+  };
+
+  // const {navigate, goBack} = useNavigation();
 
   return (
     <Block safearea primary>
@@ -44,13 +64,15 @@ const PetTapForm = () => {
           </Text>
           <Block flex={false} space="between" row>
             <Button
-              onPress={() => navigate(RouteConstants.CAMERASCREEN)}
+              onPress={takePhotoFromCamera}
+              // onPress={() => navigate(RouteConstants.CAMERASCREEN)}
               style={{width: widthPercentageToDP(40)}}
               color="transparent">
               Take Photo
             </Button>
             <Button
-              onPress={() => navigate(RouteConstants.CAMERASCREEN)}
+              onPress={choosePhoto}
+              // onPress={() => navigate(RouteConstants.CAMERASCREEN)}
               style={{width: widthPercentageToDP(40)}}
               color="transparent">
               choose from phone
@@ -62,14 +84,14 @@ const PetTapForm = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  image: {
-    height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    paddingBottom: 80,
-  },
-});
+// const styles = StyleSheet.create({
+//   image: {
+//     height: Dimensions.get('window').height,
+//     width: Dimensions.get('window').width,
+//     justifyContent: 'flex-end',
+//     alignItems: 'center',
+//     paddingBottom: 80,
+//   },
+// });
 
 export default PetTapForm;
