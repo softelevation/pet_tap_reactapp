@@ -1,13 +1,16 @@
+import {useRoute} from '@react-navigation/native';
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import {Alert, TouchableOpacity} from 'react-native';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {Block, ImageComponent, Text} from '../../components';
 
 const PetDetails = () => {
+  const {params} = useRoute();
+  console.log(params.id);
   return (
     <Block primary safearea>
       <Block flex={false} center margin={['10%', 0, 0, 0]}>
-        <ImageComponent name="pet" height="200" width="200" radius={200} />
+        <ImageComponent name="pet" height={200} width={200} radius={200} />
       </Block>
       <Text
         uppercase

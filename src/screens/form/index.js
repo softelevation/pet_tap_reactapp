@@ -84,14 +84,4 @@ export const PetTapForm = () => {
   );
 };
 
-// const styles = StyleSheet.create({
-//   image: {
-//     height: Dimensions.get('window').height,
-//     width: Dimensions.get('window').width,
-//     justifyContent: 'flex-end',
-//     alignItems: 'center',
-//     paddingBottom: 80,
-//   },
-// });
-
 export default PetTapForm;
