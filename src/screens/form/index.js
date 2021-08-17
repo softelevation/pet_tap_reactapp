@@ -1,8 +1,8 @@
-import React from 'react';
-import {StyleSheet, Dimensions} from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { StyleSheet, Dimensions } from 'react-native';
 import {
-  heightPercentageToDP,
-  widthPercentageToDP,
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import {
   Block,
@@ -12,30 +12,62 @@ import {
   CustomButton,
   ImageComponent,
 } from '../../components';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {useNavigation} from '@react-navigation/native';
-import {RouteConstants} from '../../utils/constants';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { useNavigation } from '@react-navigation/native';
+import { RouteConstants } from '../../utils/constants';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+
 
 const PetTapForm = () => {
-  const {navigate, goBack} = useNavigation();
+  const { navigate, goBack } = useNavigation();
+  // const ref = useRef();
+
+  // useEffect(() => {
+  //   ref.current?.setAddressText('Some Text');
+  // }, []);
 
   return (
     <Block safearea primary>
       <KeyboardAwareScrollView>
-        <Block flex={false} padding={[0, widthPercentageToDP(8)]}>
+        <Block flex={false} padding={[0, wp(8)]}>
           <Input label="PETS NAME" placeholder="eg. Pooch" />
           <Input label="PETS BREED" placeholder="eg. German Shepherd" />
-          <Input label="PETS ADDRESS" placeholder="eg. 1 Main St. Melbourne" />
+          <Block flex={false}>
+            <Text uppercase bold secondary size={20} margin={[hp(1),0]}>pets address</Text>
+            <GooglePlacesAutocomplete
+              // ref={ref}
+              placeholder='eg. 1 Main St. Melbourne'
+              minLength={1}
+              autoFocus={false}
+              currentLocation={false}
+              enablePoweredByContainer={false}
+              keyboardShouldPersistTaps={'handled'}
+              onPress={(data, details = null) => {
+                // 'details' is provided when fetchDetails = true
+                console.log(data, details);
+              }}
+              styles={{
+                textInputContainer: {
+                  borderWidth: 2,
+                  alignItems: 'center',
+                }
+              }}
+              query={{
+                key: 'AIzaSyBf4G3qQTDy6-DN6Tb9m6WzgYCW598EoxU',
+                language: 'en',
+              }}
+            />
+          </Block>
           <Input label="OWNERS PHONE" placeholder="eg. 0400 000 000" number />
           <Input
             label="NOTES ABOUT ME"
             placeholder="eg . gI don't like other dogs . Keep  me enterained
            with a ball"
             multiline={true}
-            style={{height: heightPercentageToDP(11)}}
+            style={{ height: hp(11) }}
           />
           <Text
-            margin={[heightPercentageToDP(1), 0, 0]}
+            margin={[hp(1), 0, 0]}
             uppercase
             bold
             size={20}
@@ -45,13 +77,13 @@ const PetTapForm = () => {
           <Block flex={false} space="between" row>
             <Button
               onPress={() => navigate(RouteConstants.CAMERASCREEN)}
-              style={{width: widthPercentageToDP(40)}}
+              style={{ width: wp(40) }}
               color="transparent">
               Take Photo
             </Button>
             <Button
               onPress={() => navigate(RouteConstants.CAMERASCREEN)}
-              style={{width: widthPercentageToDP(40)}}
+              style={{ width: wp(40) }}
               color="transparent">
               choose from phone
             </Button>
