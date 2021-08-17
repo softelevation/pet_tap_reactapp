@@ -1,5 +1,4 @@
-import React, {useEffect, useRef} from 'react';
-import {StyleSheet, Dimensions} from 'react-native';
+import React from 'react';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP,
@@ -11,6 +10,8 @@ import {useNavigation} from '@react-navigation/native';
 import {RouteConstants} from '../../utils/constants';
 import ImagePicker from 'react-native-image-crop-picker';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
+import {bold, GothamBold, lightFont} from '../../components/theme/fontsize';
+import {light} from '../../components/theme/colors';
 
 const PetTapForm = () => {
   const {navigate, goBack} = useNavigation();
@@ -71,6 +72,23 @@ const PetTapForm = () => {
                 textInputContainer: {
                   borderWidth: 2,
                   alignItems: 'center',
+                },
+                textInput: {
+                  color: '#000',
+                  fontSize: 14,
+                  backgroundColor: 'transparent',
+                  paddingVertical: hp(1),
+                },
+                listView: {
+                  color: '#8A8E99',
+                  fontSize: 14,
+                  zIndex: 1000, //To popover the component outwards,
+                },
+                description: {
+                  color: '#8A8E99',
+                  fontSize: 14,
+                  zIndex: 99,
+                  fontFamily: GothamBold,
                 },
               }}
               query={{
