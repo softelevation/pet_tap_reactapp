@@ -27,7 +27,9 @@ export const PetTapForm = () => {
       cropping: true,
     }).then(image => {
       console.log(image);
-      navigate(RouteConstants.CAMERASCREEN);
+      navigate(RouteConstants.CAMERASCREEN, {
+        image,
+      });
     });
   };
   const choosePhoto = () => {
@@ -37,7 +39,9 @@ export const PetTapForm = () => {
       cropping: true,
     }).then(image => {
       console.log(image);
-      navigate(RouteConstants.CAMERASCREEN);
+      navigate(RouteConstants.CAMERASCREEN, {
+        image,
+      });
     });
   };
 

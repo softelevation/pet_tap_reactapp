@@ -1,4 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
+import {useRoute} from '@react-navigation/native';
+
 import React from 'react';
 import {
   heightPercentageToDP,
@@ -7,8 +9,9 @@ import {
 import {Block, Text, CustomButton, ImageComponent} from '../../components';
 import {RouteConstants} from '../../utils/constants';
 
-const Camera = () => {
+const Camera = ({route}) => {
   const {navigate, goBack} = useNavigation();
+
   return (
     <Block primary safearea>
       <Block
