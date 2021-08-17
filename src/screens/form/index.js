@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
+import {StyleSheet, Dimensions} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP,
@@ -96,7 +97,7 @@ const PetTapForm = () => {
                 },
               }}
               query={{
-                key: 'AIzaSyBf4G3qQTDy6-DN6Tb9m6WzgYCW598EoxU',
+                key: 'AIzaSyAqaOuauTLOjVMSaA_ytFeLNPk8tyPAW94',
                 language: 'en',
               }}
             />

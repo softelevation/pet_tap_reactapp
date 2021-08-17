@@ -1,12 +1,29 @@
 import {useRoute} from '@react-navigation/native';
 import React from 'react';
-import {Alert, TouchableOpacity} from 'react-native';
+import {TouchableOpacity, Linking} from 'react-native';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {Block, ImageComponent, Text} from '../../components';
 
 const PetDetails = () => {
   const {params} = useRoute();
   console.log(params.id);
+  const handlemessagepress = () => {
+    Linking.openURL('sms:number=+919994445566');
+  };
+
+  const handlephonepress = () => {
+    Linking.openURL('tel:+919994445559');
+  };
+
+  // const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
+  // const latLng = `${lat},${lng}`;
+  // const label = 'Custom Label';
+  // const url = Platform.select({
+  //   ios: `${scheme}${label}@${latLng}`,
+  //   android: `${scheme}${latLng}(${label})`
+  // });
+  // Linking.openURL(url);
+
   return (
     <Block primary safearea>
       <Block flex={false} center margin={['10%', 0, 0, 0]}>
@@ -39,7 +56,7 @@ const PetDetails = () => {
       </Text>
       <Block center middle flex={false} row>
         <Block flex={false} column margin={[0, 0, 0, '5%']}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handlephonepress}>
             <ImageComponent name="phone" height={100} width={100} />
             <Text light center margin={[hp(1), 0, 0, 0]}>
               Phone
@@ -57,7 +74,7 @@ const PetDetails = () => {
         </Block>
 
         <Block flex={false} column margin={[0, 0, 0, '5%']}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handlemessagepress}>
             <ImageComponent name="message" height={100} width={100} />
             <Text light center margin={[hp(1), 0, 0, 0]}>
               Message
