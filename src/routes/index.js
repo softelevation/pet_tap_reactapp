@@ -15,10 +15,18 @@ import {isReadyRef, navigationRef} from './NavigationService';
 
 const Stack = createNativeStackNavigator();
 const linking = {
-  prefixes: ['pettap://'],
+  prefixes: ['pettap://app'],
   config: {
     screens: {
-      Success: RouteConstants.SUCCESS,
+      Success: {
+        path: 'profile',
+      },
+      PetDetails: {
+        path: 'pet-details/:id',
+        parse: {
+          id: id => `${id}`,
+        },
+      },
     },
   },
 };

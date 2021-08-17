@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import {Linking} from 'react-native';
 import Routes from './src/routes';
-
+import * as NavigationService from './src/routes/NavigationService';
+import {RouteConstants} from './src/utils/constants';
 const App = () => {
   const LinkingNavigation = async () => {
     // This is call when app is in kill state & open from Deeplik URL
@@ -20,7 +21,9 @@ const App = () => {
           params[match[1]] = match[2];
         }
         console.log('URL PARAM ID : ' + params.userid);
-        // NavigationService.navigate('UserProfile', { profile_id: UserCardID })
+        NavigationService.navigate(RouteConstants.PET_DETAILS, {
+          profile_id: 30,
+        });
       }, 3500);
     }
   };
