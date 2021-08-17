@@ -1,17 +1,9 @@
 import React from 'react';
-import {StyleSheet, Dimensions} from 'react-native';
 import {
   heightPercentageToDP,
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
-import {
-  Block,
-  Text,
-  Input,
-  Button,
-  CustomButton,
-  ImageComponent,
-} from '../../components';
+import {Block, Text, Input, Button} from '../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useNavigation} from '@react-navigation/native';
 import {RouteConstants} from '../../utils/constants';
@@ -24,6 +16,8 @@ export const PetTapForm = () => {
     ImagePicker.openCamera({
       width: 300,
       height: 400,
+      includeBase64: true,
+      useFrontCamera: true,
       cropping: true,
     }).then(image => {
       console.log(image);
@@ -35,6 +29,8 @@ export const PetTapForm = () => {
       width: 300,
       height: 400,
       cropping: true,
+      includeBase64: true,
+      cropperCircleOverlay: true,
     }).then(image => {
       console.log(image);
       navigate(RouteConstants.CAMERASCREEN);
