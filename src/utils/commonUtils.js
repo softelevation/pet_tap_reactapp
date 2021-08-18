@@ -309,7 +309,7 @@ export const formatDuration = duration => {
   return hh === '00' ? `${mm}:${ss}` : `${hh}:${mm}:${ss}`;
 };
 export const useDebouncedEffect = (effect, delay, deps) => {
-  const callback = useCallback(effect, deps);
+  const callback = React.useCallback(effect, deps);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -321,14 +321,3 @@ export const useDebouncedEffect = (effect, delay, deps) => {
     };
   }, [callback, delay]);
 };
-
-// export const Alerts = (message, description, color, duration) => {
-//   showMessage({
-//     message,
-//     description,
-//     type: 'success',
-//     backgroundColor: color || '#3F51B5', // background color
-//     color: '#fff', // text color
-//     duration: duration || 1800,
-//   });
-// };

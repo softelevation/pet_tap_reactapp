@@ -3,6 +3,7 @@ import {petDetailsError, petDetailsSuccess} from './action';
 import {put, call, all, takeLatest} from 'redux-saga/effects';
 import {apiCall} from '../store/api-client';
 import {APIURL} from '../../utils/constants';
+import {onDisplayNotification} from '../../utils/mobile-utils';
 export function* request(action) {
   try {
     // const response = yield call(paymentApi, action.payload);
@@ -15,8 +16,10 @@ export function* request(action) {
       yield put(petDetailsSuccess(response.data));
     } else {
       yield put(petDetailsError(response));
+      onDisplayNotification('Error', response.message, false);
     }
   } catch (err) {
+    onDisplayNotification('Error', err.response.message, false);
     yield put(petDetailsError());
   }
 }

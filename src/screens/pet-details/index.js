@@ -2,13 +2,17 @@
 import {useFocusEffect, useRoute} from '@react-navigation/native';
 import React from 'react';
 import {TouchableOpacity, Linking, Platform} from 'react-native';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP,
+} from 'react-native-responsive-screen';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 import {Block, ImageComponent, Text} from '../../components';
 import LoadingView from '../../components/LoadingView';
 import {petDetailsRequest} from '../../redux/pet-details/action';
 import {strictValidObjectWithKeys} from '../../utils/commonUtils';
+import {APIURL} from '../../utils/constants';
 
 const PetDetails = () => {
   const {params} = useRoute();
@@ -64,9 +68,18 @@ const PetDetails = () => {
   };
 
   return (
-    <Block primary safearea>
+    <Block center primary safearea>
       <Block flex={false} center margin={['10%', 0, 0, 0]}>
-        <ImageComponent name="pet" height={200} width={200} radius={200} />
+        {strictValidObjectWithKeys(profile) &&
+          strictValidObjectWithKeys(profile.pet) && (
+            <ImageComponent
+              isURL
+              name={`${APIURL.BaseURL}/${profile.pet.photo}`}
+              height={200}
+              width={200}
+              radius={200}
+            />
+          )}
       </Block>
       <Text
         uppercase
@@ -84,7 +97,12 @@ const PetDetails = () => {
           strictValidObjectWithKeys(profile.pet) &&
           profile.pet.pets_breed}
       </Text>
-      <Text light size={16} center margin={['5%', 0, 0, 0]}>
+      <Text
+        style={{width: widthPercentageToDP(90)}}
+        center
+        light
+        size={16}
+        margin={['5%', 0, 0, 0]}>
         {strictValidObjectWithKeys(profile) &&
           strictValidObjectWithKeys(profile.pet) &&
           profile.pet.notes_about_me}
