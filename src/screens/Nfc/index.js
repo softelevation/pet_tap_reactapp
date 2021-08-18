@@ -52,7 +52,7 @@ const Nfc = () => {
     };
     const response = await apiCall('POST', APIURL.assignTag, data);
     if (response.status === 1) {
-      writeCard();
+      writeCard(pet.id);
       onDisplayNotification('Success', response.message, true);
       navigate(RouteConstants.SUCCESS);
     } else {
@@ -70,16 +70,14 @@ const Nfc = () => {
   function buildUrlPayload(valueToWrite) {
     return Ndef.encodeMessage([Ndef.uriRecord(valueToWrite)]);
   }
-  const writeCard = async () => {
+  const writeCard = async id => {
     const user_id = 'rrr';
     console.log(
-      'http://admin.cliquesocial.co/user/profile/' + user_id,
+      'http://admin.cliquesocial.co/user/profile/' + id,
       'card id sync successfully',
     );
     try {
-      let bytes = await buildUrlPayload(
-        'http://admin.cliquesocial.co/user/profile/' + user_id,
-      );
+      let bytes = await buildUrlPayload('pettap://app/pet-details/' + id);
       if (bytes) {
         await NfcManager.writeNdefMessage(bytes);
         console.log('successfully write ndef', bytes);
