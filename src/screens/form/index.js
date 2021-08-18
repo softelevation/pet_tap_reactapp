@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
+import {StyleSheet, Dimensions} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP,
@@ -30,7 +31,9 @@ const PetTapForm = () => {
       cropping: true,
     }).then(image => {
       console.log(image);
-      navigate(RouteConstants.CAMERASCREEN);
+      navigate(RouteConstants.CAMERASCREEN, {
+        image,
+      });
     });
   };
   const choosePhoto = () => {
@@ -42,7 +45,9 @@ const PetTapForm = () => {
       cropperCircleOverlay: true,
     }).then(image => {
       console.log(image);
-      navigate(RouteConstants.CAMERASCREEN);
+      navigate(RouteConstants.CAMERASCREEN, {
+        image,
+      });
     });
   };
 

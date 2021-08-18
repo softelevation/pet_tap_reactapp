@@ -1,4 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
+
 import React from 'react';
 import {
   heightPercentageToDP,
@@ -7,19 +8,37 @@ import {
 import {Block, Text, CustomButton, ImageComponent} from '../../components';
 import {RouteConstants} from '../../utils/constants';
 
-const Camera = () => {
+const Camera = ({route}) => {
   const {navigate, goBack} = useNavigation();
+  console.log(route.params.image);
+  let data = route.params.image;
   return (
     <Block primary safearea>
-      <Block
-        margin={[heightPercentageToDP(5), 0, 0]}
-        center
-        alignSelf="center"
-        flex={false}
-        style={{height: 200, width: 200}}
-        borderRadius={200}
-        color="#C8C8C8"
-      />
+      {!data.path ? (
+        <Block
+          margin={[heightPercentageToDP(5), 0, 0]}
+          center
+          alignSelf="center"
+          flex={false}
+          style={{height: 200, width: 200}}
+          borderRadius={200}
+          color="#C8C8C8"
+        />
+      ) : (
+        <Block
+          margin={[heightPercentageToDP(5), 0, 0]}
+          center
+          alignSelf="center"
+          flex={false}>
+          <ImageComponent
+            isURL
+            name={data.path}
+            radius={200}
+            height={200}
+            width={200}
+          />
+        </Block>
+      )}
       <Text
         margin={[heightPercentageToDP(4), 0, heightPercentageToDP(2)]}
         uppercase
