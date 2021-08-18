@@ -5,8 +5,8 @@ import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {Block, ImageComponent, Text} from '../../components';
 
 const PetDetails = () => {
-  const {params} = useRoute();
-  console.log(params.id);
+  // const {params} = useRoute();
+  // console.log(params.id);
   const handlemessagepress = () => {
     Linking.openURL('sms:number=+919994445566');
   };
