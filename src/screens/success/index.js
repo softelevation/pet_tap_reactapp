@@ -39,6 +39,16 @@ const Success = () => {
               contact
             </Text>
           </TouchableOpacity>
+          <Text
+            semibold
+            size={10}
+            center
+            margin={[heightPercentageToDP(4), 0, 0, 0]}>
+            Pet Tap{' '}
+            <Text semibold size={8}>
+              © COPYRIGHT 2021 | ALL RIGHTS RESERVED
+            </Text>
+          </Text>
         </ImageBackground>
       </ScrollView>
     </Block>
@@ -48,7 +58,7 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     justifyContent: 'flex-end',
-    paddingBottom: heightPercentageToDP(6),
+    paddingBottom: heightPercentageToDP(10),
     alignItems: 'center',
   },
   onlineButton: {

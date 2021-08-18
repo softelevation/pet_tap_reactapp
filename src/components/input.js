@@ -13,7 +13,7 @@ import {t1} from './theme/fontsize';
 const componentStyles = () => {
   return StyleSheet.create({
     label: {
-      marginBottom: heightPercentageToDP(0.8),
+      marginBottom: heightPercentageToDP(0.9),
     },
     input: {
       paddingVertical:
@@ -21,7 +21,7 @@ const componentStyles = () => {
           ? heightPercentageToDP(1.5)
           : heightPercentageToDP(0.3),
       paddingHorizontal: widthPercentageToDP(3),
-      borderWidth: 2,
+      borderWidth: 1.5,
       borderColor: '#231F20',
       fontSize: 14,
       color: '#231F20',

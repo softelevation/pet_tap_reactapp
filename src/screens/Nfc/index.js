@@ -15,7 +15,7 @@ const Nfc = () => {
 
   useEffect(() => {
     CardScan();
-    API_WRITE_CARD();
+    // API_WRITE_CARD();
     return () => {
       NfcManager.cancelTechnologyRequest().catch(() => 0);
     };

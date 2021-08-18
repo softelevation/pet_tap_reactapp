@@ -1,5 +1,6 @@
 import React, {useRef} from 'react';
 import {
+  heightPercentageToDP,
   heightPercentageToDP as hp,
   widthPercentageToDP,
   widthPercentageToDP as wp,
@@ -84,7 +85,7 @@ const PetTapForm = () => {
         }) => {
           return (
             <KeyboardAwareScrollView>
-              <Block flex={false} padding={[0, wp(8)]}>
+              <Block flex={false} padding={[hp(3), wp(8)]}>
                 <Input
                   label="PETS NAME"
                   placeholder="eg. Pooch"
@@ -111,7 +112,7 @@ const PetTapForm = () => {
                     uppercase
                     bold
                     size={20}
-                    margin={[hp(1), 0]}>
+                    margin={[hp(0.9), 0]}>
                     pets address
                   </Text>
                   <GooglePlacesAutocomplete
@@ -139,12 +140,13 @@ const PetTapForm = () => {
                     }}
                     styles={{
                       textInputContainer: {
-                        borderWidth: 2,
+                        borderWidth: 1.5,
                         borderColor:
                           touched.pets_address && errors.pets_address
                             ? 'red'
                             : '#231F20',
                         alignItems: 'center',
+                        marginBottom: heightPercentageToDP(1),
                       },
                       textInput: {
                         color: '#000',
@@ -183,7 +185,7 @@ const PetTapForm = () => {
                   label="NOTES ABOUT ME"
                   placeholder="eg . gI don't like other dogs . Keep  me enterained with a ball"
                   multiline={true}
-                  style={{height: hp(11)}}
+                  style={{height: hp(14)}}
                   value={values.notes_about_me}
                   onChangeText={handleChange('notes_about_me')}
                   onBlur={() => setFieldTouched('notes_about_me')}
@@ -215,6 +217,16 @@ const PetTapForm = () => {
                   </Button>
                 </Block>
               </Block>
+              <Text
+                semibold
+                size={10}
+                center
+                margin={[heightPercentageToDP(6), 0, 0, 0]}>
+                Pet Tap{' '}
+                <Text semibold size={8}>
+                  © COPYRIGHT 2021 | ALL RIGHTS RESERVED
+                </Text>
+              </Text>
             </KeyboardAwareScrollView>
           );
         }}
