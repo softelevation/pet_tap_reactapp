@@ -1,8 +1,13 @@
 import React, {useEffect} from 'react';
-import {Linking} from 'react-native';
+import {Linking, StatusBar} from 'react-native';
 import Routes from './src/routes';
 import * as NavigationService from './src/routes/NavigationService';
 import {RouteConstants} from './src/utils/constants';
+import {PersistGate} from 'redux-persist/integration/react';
+import {sagaMiddleware, store, persistor} from './src/redux/store';
+import rootSaga from './src/redux/saga';
+import {Provider} from 'react-redux';
+sagaMiddleware.run(rootSaga);
 const App = () => {
   const LinkingNavigation = async () => {
     // This is call when app is in kill state & open from Deeplik URL
@@ -63,7 +68,14 @@ const App = () => {
       // }
     }
   };
-  return <Routes />;
+  return (
+    <Provider store={store}>
+      <StatusBar barStyle="dark-content" />
+      <PersistGate loading={null} persistor={persistor}>
+        <Routes />
+      </PersistGate>
+    </Provider>
+  );
 };
 
 export default App;
