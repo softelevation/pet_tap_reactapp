@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux';
-import payment from './payments/reducer';
-// import profile from '../screens/profile/reducer';
+import petRegistered from './registration/reducer';
+import petDetails from './pet-details/reducer';
 import location from './location/reducer';
 
 const rootreducer = combineReducers({
-  payment,
-  // profile,
+  petRegistered,
+  petDetails,
   location,
 });
 export default rootreducer;

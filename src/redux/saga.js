@@ -1,9 +1,6 @@
 import {all} from 'redux-saga/effects';
-import {paymentWatcher} from './payments/saga';
-// import {profileWatcher} from '../screens/profile/saga';
+import {petRegisterWatcher} from './registration/saga';
+import {petDetailsWatcher} from './pet-details/saga';
 export default function* rootSaga() {
-  yield all([
-    paymentWatcher(),
-    // profileWatcher()
-  ]);
+  yield all([petRegisterWatcher(), petDetailsWatcher()]);
 }

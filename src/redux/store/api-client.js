@@ -1,6 +1,6 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {APIURL} from '../../Constants/APIURL';
+import {APIURL} from '../../utils/constants';
 
 const client = axios.create({
   baseURL: APIURL.BaseURL,

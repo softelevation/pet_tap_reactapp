@@ -5,13 +5,33 @@ import {
   heightPercentageToDP,
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
+import {useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {Block, Text, CustomButton, ImageComponent} from '../../components';
-import {RouteConstants} from '../../utils/constants';
+import LoadingView from '../../components/LoadingView';
+import {petRegistrationRequest} from '../../redux/registration/action';
 
 const Camera = ({route}) => {
-  const {navigate, goBack} = useNavigation();
-  console.log(route.params.image);
+  const {goBack} = useNavigation();
   let data = route.params.image;
+  let values = route.params.values;
+  const dispatch = useDispatch();
+  const loader = useSelector(state => state.petRegistered.loading);
+
+  const onSubmit = () => {
+    const newData = {
+      pets_name: values.pets_name,
+      pets_breed: values.pets_breed,
+      pets_address: values.pets_address,
+      owners_phone: values.owners_phone,
+      notes_about_me: values.notes_about_me,
+      photo: data.data,
+      lat: values.lat,
+      lng: values.lng,
+    };
+    console.log(newData, 'data');
+    dispatch(petRegistrationRequest(newData));
+  };
   return (
     <Block primary safearea>
       {!data.path ? (
@@ -73,7 +93,7 @@ const Camera = ({route}) => {
           </Text>
         </CustomButton>
         <CustomButton
-          onPress={() => navigate(RouteConstants.NFCMANAGER)}
+          onPress={() => onSubmit()}
           center
           row
           padding={[heightPercentageToDP(2), widthPercentageToDP(10)]}
@@ -99,6 +119,7 @@ const Camera = ({route}) => {
           </Block>
         </CustomButton>
       </Block>
+      {loader ? <LoadingView /> : null}
     </Block>
   );
 };
