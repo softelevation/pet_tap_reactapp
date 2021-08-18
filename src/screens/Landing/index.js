@@ -24,6 +24,8 @@ const PetDetails = () => {
   // });
   // Linking.openURL(url);
 
+  const {params} = useRoute();
+
   return (
     <Block primary safearea>
       <Block flex={false} center margin={['10%', 0, 0, 0]}>

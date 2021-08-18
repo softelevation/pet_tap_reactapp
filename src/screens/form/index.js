@@ -1,5 +1,4 @@
-import React, {useEffect, useRef} from 'react';
-import {StyleSheet, Dimensions} from 'react-native';
+import React from 'react';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP,
