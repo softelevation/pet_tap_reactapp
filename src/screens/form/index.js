@@ -1,30 +1,50 @@
-import React, { useEffect, useRef } from 'react';
-import { StyleSheet, Dimensions  } from 'react-native';
+import React from 'react';
 import {
   heightPercentageToDP as hp,
+  widthPercentageToDP,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import {
-  Block,
-  Text,
-  Input,
-  Button,
-  CustomButton,
-  ImageComponent,
-} from '../../components';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { useNavigation } from '@react-navigation/native';
-import { RouteConstants } from '../../utils/constants';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-
+import {Block, Text, Input, Button} from '../../components';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {useNavigation} from '@react-navigation/native';
+import {RouteConstants} from '../../utils/constants';
+import ImagePicker from 'react-native-image-crop-picker';
+import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
+import {bold, GothamBold, lightFont} from '../../components/theme/fontsize';
+import {light} from '../../components/theme/colors';
 
 const PetTapForm = () => {
-  const { navigate, goBack } = useNavigation();
+  const {navigate, goBack} = useNavigation();
   // const ref = useRef();
 
   // useEffect(() => {
   //   ref.current?.setAddressText('Some Text');
   // }, []);
+
+  const takePhotoFromCamera = () => {
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      includeBase64: true,
+      useFrontCamera: true,
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+      navigate(RouteConstants.CAMERASCREEN);
+    });
+  };
+  const choosePhoto = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+      includeBase64: true,
+      cropperCircleOverlay: true,
+    }).then(image => {
+      console.log(image);
+      navigate(RouteConstants.CAMERASCREEN);
+    });
+  };
 
   return (
     <Block safearea primary>
@@ -33,10 +53,12 @@ const PetTapForm = () => {
           <Input label="PETS NAME" placeholder="eg. Pooch" />
           <Input label="PETS BREED" placeholder="eg. German Shepherd" />
           <Block flex={false}>
-            <Text uppercase bold secondary size={20} margin={[hp(1),0]}>pets address</Text>
+            <Text uppercase bold secondary size={20} margin={[hp(1), 0]}>
+              pets address
+            </Text>
             <GooglePlacesAutocomplete
               // ref={ref}
-              placeholder='eg. 1 Main St. Melbourne'
+              placeholder="eg. 1 Main St. Melbourne"
               minLength={1}
               autoFocus={false}
               currentLocation={false}
@@ -50,7 +72,24 @@ const PetTapForm = () => {
                 textInputContainer: {
                   borderWidth: 2,
                   alignItems: 'center',
-                }
+                },
+                textInput: {
+                  color: '#000',
+                  fontSize: 14,
+                  backgroundColor: 'transparent',
+                  paddingVertical: hp(1),
+                },
+                listView: {
+                  color: '#8A8E99',
+                  fontSize: 14,
+                  zIndex: 1000, //To popover the component outwards,
+                },
+                description: {
+                  color: '#8A8E99',
+                  fontSize: 14,
+                  zIndex: 99,
+                  fontFamily: GothamBold,
+                },
               }}
               query={{
                 key: 'AIzaSyAqaOuauTLOjVMSaA_ytFeLNPk8tyPAW94',
@@ -64,26 +103,23 @@ const PetTapForm = () => {
             placeholder="eg . gI don't like other dogs . Keep  me enterained
            with a ball"
             multiline={true}
-            style={{ height: hp(11) }}
+            style={{height: hp(11)}}
           />
-          <Text
-            margin={[hp(1), 0, 0]}
-            uppercase
-            bold
-            size={20}
-            secondary>
+          <Text margin={[hp(1), 0, 0]} uppercase bold size={20} secondary>
             photo
           </Text>
           <Block flex={false} space="between" row>
             <Button
-              onPress={() => navigate(RouteConstants.CAMERASCREEN)}
-              style={{ width: wp(40) }}
+              onPress={takePhotoFromCamera}
+              // onPress={() => navigate(RouteConstants.CAMERASCREEN)}
+              style={{width: widthPercentageToDP(40)}}
               color="transparent">
               Take Photo
             </Button>
             <Button
-              onPress={() => navigate(RouteConstants.CAMERASCREEN)}
-              style={{ width: wp(40) }}
+              onPress={choosePhoto}
+              // onPress={() => navigate(RouteConstants.CAMERASCREEN)}
+              style={{width: widthPercentageToDP(40)}}
               color="transparent">
               choose from phone
             </Button>
@@ -93,15 +129,5 @@ const PetTapForm = () => {
     </Block>
   );
 };
-
-const styles = StyleSheet.create({
-  image: {
-    height: Dimensions.get('window').height,
-    width: Dimensions.get('window').width,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    paddingBottom: 80,
-  },
-});
 
 export default PetTapForm;

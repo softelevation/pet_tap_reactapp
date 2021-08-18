@@ -6,6 +6,7 @@ import {
   Dimensions,
   ScrollView,
   StyleSheet,
+  Linking
 } from 'react-native';
 import {
   heightPercentageToDP,
@@ -16,6 +17,15 @@ import {light} from '../../components/theme/colors';
 import {RouteConstants} from '../../utils/constants';
 const Home = () => {
   const {navigate} = useNavigation();
+
+  const handlecontactpress = () => {
+    Linking.openURL("mailto:info@pettap.com.au")
+  }
+
+  const handlesitepress = () => {
+    Linking.openURL("https://www.pettap.com.au/")
+  }
+
   return (
     <ScrollView style={{backgroundColor: light.primary}} bounces={false}>
       <ImageBackground
@@ -30,12 +40,12 @@ const Home = () => {
             create/update your tag
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} style={styles.onlineButton}>
+        <TouchableOpacity onPress={handlesitepress} activeOpacity={0.7} style={styles.onlineButton}>
           <Text uppercase secondary size={40} center bold>
             online store
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} style={styles.contactButton}>
+        <TouchableOpacity onPress={handlecontactpress} activeOpacity={0.7} style={styles.contactButton}>
           <Text uppercase secondary size={40} center bold>
             contact
           </Text>

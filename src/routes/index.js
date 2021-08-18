@@ -11,12 +11,33 @@ import Success from '../screens/endpage';
 import PetDetails from '../screens/Landing';
 import Splash from '../screens/splash';
 import Camera from '../screens/camera';
+import {isReadyRef, navigationRef} from './NavigationService';
 
 const Stack = createNativeStackNavigator();
-
+const linking = {
+  prefixes: ['pettap://app'],
+  config: {
+    screens: {
+      Success: {
+        path: 'profile',
+      },
+      PetDetails: {
+        path: 'pet-details/:id',
+        parse: {
+          id: id => `${id}`,
+        },
+      },
+    },
+  },
+};
 function Routes() {
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      linking={linking}
+      ref={navigationRef}
+      onReady={() => {
+        isReadyRef.current = true;
+      }}>
       <Stack.Navigator
         initialRouteName={RouteConstants.SPLASH}
         screenOptions={{headerShown: false}}>

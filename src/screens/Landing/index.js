@@ -1,7 +1,8 @@
+import {useRoute} from '@react-navigation/native';
 import React from 'react';
-import { TouchableOpacity, Linking } from 'react-native';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { Block, ImageComponent, Text } from '../../components';
+import {Alert, TouchableOpacity ,Linking} from 'react-native';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {Block, ImageComponent, Text} from '../../components';
 
 const PetDetails = () => {
 
@@ -22,10 +23,15 @@ const PetDetails = () => {
   // });
   // Linking.openURL(url);
 
+
+
+
+  const {params} = useRoute();
+ 
   return (
     <Block primary safearea>
       <Block flex={false} center margin={['10%', 0, 0, 0]}>
-        <ImageComponent name="pet" height="200" width="200" radius={200} />
+        <ImageComponent name="pet" height={200} width={200} radius={200} />
       </Block>
       <Text
         uppercase
