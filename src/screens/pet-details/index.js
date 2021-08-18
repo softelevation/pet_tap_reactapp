@@ -1,30 +1,67 @@
-import {useRoute} from '@react-navigation/native';
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useFocusEffect, useRoute} from '@react-navigation/native';
 import React from 'react';
-import {TouchableOpacity, Linking} from 'react-native';
+import {TouchableOpacity, Linking, Platform} from 'react-native';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {Block, ImageComponent, Text} from '../../components';
+import LoadingView from '../../components/LoadingView';
+import {petDetailsRequest} from '../../redux/pet-details/action';
+import {strictValidObjectWithKeys} from '../../utils/commonUtils';
 
 const PetDetails = () => {
-  // const {params} = useRoute();
-  // console.log(params.id);
+  const {params} = useRoute();
+  console.log(params);
+  const dispatch = useDispatch();
+
+  const [profile, loading] = useSelector(v => [
+    v.petDetails.data,
+    v.petDetails.loading,
+  ]);
+  console.log(profile, 'profile');
+  useFocusEffect(
+    React.useCallback(() => {
+      dispatch(petDetailsRequest(params.id));
+    }, []),
+  );
+
   const handlemessagepress = () => {
-    Linking.openURL('sms:number=+919994445566');
+    if (
+      strictValidObjectWithKeys(profile) &&
+      strictValidObjectWithKeys(profile.pet)
+    ) {
+      Linking.openURL(`sms:number=${profile.pet.owners_phone}`);
+    }
   };
 
   const handlephonepress = () => {
-    Linking.openURL('tel:+919994445559');
+    if (
+      strictValidObjectWithKeys(profile) &&
+      strictValidObjectWithKeys(profile.pet)
+    ) {
+      Linking.openURL(`tel:${profile.pet.owners_phone}`);
+    }
   };
 
-  // const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
-  // const latLng = `${lat},${lng}`;
-  // const label = 'Custom Label';
-  // const url = Platform.select({
-  //   ios: `${scheme}${label}@${latLng}`,
-  //   android: `${scheme}${latLng}(${label})`
-  // });
-  // Linking.openURL(url);
-
-  const {params} = useRoute();
+  const openMaps = (lat, lng) => {
+    if (
+      strictValidObjectWithKeys(profile) &&
+      strictValidObjectWithKeys(profile.pet)
+    ) {
+      const scheme = Platform.select({
+        ios: 'maps:0,0?q=',
+        android: 'geo:0,0?q=',
+      });
+      const latLng = `${profile.pet.lat},${profile.pet.lng}`;
+      const label = profile.pet.pets_name;
+      const url = Platform.select({
+        ios: `${scheme}${label}@${latLng}`,
+        android: `${scheme}${latLng}(${label})`,
+      });
+      Linking.openURL(url);
+    }
+  };
 
   return (
     <Block primary safearea>
@@ -38,14 +75,19 @@ const PetDetails = () => {
         bold
         color="#E9138C"
         margin={[hp(3), 0, hp(1), 0]}>
-        pooch
+        {strictValidObjectWithKeys(profile) &&
+          strictValidObjectWithKeys(profile.pet) &&
+          profile.pet.pets_name}
       </Text>
       <Text capitalize size={25} semibold center>
-        German shepherd
+        {strictValidObjectWithKeys(profile) &&
+          strictValidObjectWithKeys(profile.pet) &&
+          profile.pet.pets_breed}
       </Text>
       <Text light size={16} center margin={['5%', 0, 0, 0]}>
-        I am a friendly dog. However, i don't loke{'\n'}kids. I get along with
-        other dogs, throw{'\n'}a ball with me to keep me entertained
+        {strictValidObjectWithKeys(profile) &&
+          strictValidObjectWithKeys(profile.pet) &&
+          profile.pet.notes_about_me}
       </Text>
       <Text
         capitalize
@@ -67,7 +109,7 @@ const PetDetails = () => {
         </Block>
 
         <Block flex={false} column margin={[0, 0, 0, '5%']}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => openMaps()}>
             <ImageComponent name="address" height={100} width={100} />
             <Text light center margin={[hp(1), 0, 0, 0]}>
               Address
@@ -93,6 +135,7 @@ const PetDetails = () => {
         margin={[hp(2), 0, 0, 0]}>
         Thankyou for{'\n'}looking after me!
       </Text>
+      {loading ? <LoadingView /> : null}
     </Block>
   );
 };
