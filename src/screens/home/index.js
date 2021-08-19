@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingBottom: 80,
+    paddingBottom: heightPercentageToDP(4),
   },
   onlineButton: {
     borderWidth: 4,

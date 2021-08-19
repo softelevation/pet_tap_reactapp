@@ -19,7 +19,7 @@ const componentStyles = () => {
       paddingVertical:
         Platform.OS === 'ios'
           ? heightPercentageToDP(1.5)
-          : heightPercentageToDP(0.3),
+          : heightPercentageToDP(0.9),
       paddingHorizontal: widthPercentageToDP(3),
       borderWidth: 1.5,
       borderColor: '#231F20',

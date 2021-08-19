@@ -15,6 +15,9 @@ const Success = () => {
   const handlestorepress = () => {
     Linking.openURL('https://www.pettap.com.au/');
   };
+  const handlecontactpress = () => {
+    Linking.openURL('mailto:info@pettap.com.au');
+  };
 
   return (
     <Block primary>
@@ -32,13 +35,23 @@ const Success = () => {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigate(RouteConstants.PET_DETAILS)}
+            onPress={() => handlecontactpress()}
             activeOpacity={0.7}
             style={styles.contactButton}>
             <Text uppercase secondary size={40} center bold>
               contact
             </Text>
           </TouchableOpacity>
+          <Text
+            onPress={() => navigate(RouteConstants.HOMESCREEN)}
+            center
+            color="#E9138C"
+            semibold
+            size={10}
+            height={29}
+            margin={[heightPercentageToDP(2), 0, 0, 0]}>
+            Back to Home
+          </Text>
           <Text
             semibold
             size={10}

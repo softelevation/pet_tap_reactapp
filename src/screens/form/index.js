@@ -5,7 +5,7 @@ import {
   widthPercentageToDP,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import {Block, Text, Input, Button} from '../../components';
+import {Block, Text, Input, Button, ImageComponent} from '../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useNavigation} from '@react-navigation/native';
 import {RouteConstants} from '../../utils/constants';
@@ -15,9 +15,10 @@ import {GothamBold} from '../../components/theme/fontsize';
 import * as yup from 'yup';
 import {Formik} from 'formik';
 import {light} from '../../components/theme/colors';
+import {TouchableOpacity} from 'react-native';
 
 const PetTapForm = () => {
-  const {navigate} = useNavigation();
+  const {navigate, goBack} = useNavigation();
   const formikRef = useRef();
 
   const onSubmit = values => {
@@ -50,9 +51,32 @@ const PetTapForm = () => {
       });
     }
   };
+  const phoneRegExp =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
   return (
     <Block safearea primary>
+      <TouchableOpacity
+        onPress={() => goBack()}
+        style={{
+          paddingHorizontal: widthPercentageToDP(3),
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}>
+        <ImageComponent
+          name="left_icon"
+          height={22}
+          width={22}
+          color={light.secondary}
+        />
+        <Text
+          margin={[heightPercentageToDP(0.3), 0, 0]}
+          secondary
+          bold
+          size={18}>
+          Back
+        </Text>
+      </TouchableOpacity>
       <Formik
         innerRef={formikRef}
         enableReinitialize
@@ -70,7 +94,12 @@ const PetTapForm = () => {
           pets_breed: yup.string().min(1).required(),
           pets_address: yup.string().min(1).required(),
           notes_about_me: yup.string().min(1).required(),
-          owners_phone: yup.string().min(10).required(),
+          owners_phone: yup
+            .string()
+            .required('required')
+            .matches(phoneRegExp, 'Phone number is not valid')
+            .min(8, 'to short')
+            .max(12, 'to long'),
         })}>
         {({
           values,
@@ -84,7 +113,7 @@ const PetTapForm = () => {
           isValid,
         }) => {
           return (
-            <KeyboardAwareScrollView>
+            <KeyboardAwareScrollView keyboardShouldPersistTaps="always">
               <Block flex={false} padding={[hp(3), wp(8)]}>
                 <Input
                   label="PETS NAME"
@@ -180,11 +209,13 @@ const PetTapForm = () => {
                   onChangeText={handleChange('owners_phone')}
                   onBlur={() => setFieldTouched('owners_phone')}
                   error={touched.owners_phone && errors.owners_phone}
+                  maxLength={12}
                 />
                 <Input
                   label="NOTES ABOUT ME"
                   placeholder="eg . gI don't like other dogs . Keep  me enterained with a ball"
                   multiline={true}
+                  textAlignVertical="top"
                   style={{height: hp(14)}}
                   value={values.notes_about_me}
                   onChangeText={handleChange('notes_about_me')}
