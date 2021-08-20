@@ -213,7 +213,7 @@ const PetTapForm = () => {
                 />
                 <Input
                   label="NOTES ABOUT ME"
-                  placeholder="eg . gI don't like other dogs . Keep  me enterained with a ball"
+                  placeholder="eg. I don't like other dogs . Keep  me enterained with a ball"
                   multiline={true}
                   textAlignVertical="top"
                   style={{height: hp(14)}}
