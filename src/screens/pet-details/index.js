@@ -136,8 +136,8 @@ const PetDetails = () => {
             margin={[hp(3), 0]}>
             contact my owner
           </Text>
-          <Block flex={false} row>
-            <Block flex={false} column margin={[0, 0, 0, '5%']}>
+          <Block center flex={false} row space="evenly">
+            <Block flex={false}>
               <TouchableOpacity onPress={handlephonepress}>
                 <ImageComponent name="phone" height={100} width={100} />
                 <Text size={18} light center margin={[hp(1), 0, 0, 0]}>
@@ -145,8 +145,7 @@ const PetDetails = () => {
                 </Text>
               </TouchableOpacity>
             </Block>
-
-            <Block flex={false} column margin={[0, 0, 0, '5%']}>
+            <Block flex={false}>
               <TouchableOpacity onPress={() => openMaps()}>
                 <ImageComponent name="address" height={100} width={100} />
                 <Text size={18} light center margin={[hp(1), 0, 0, 0]}>
@@ -155,7 +154,7 @@ const PetDetails = () => {
               </TouchableOpacity>
             </Block>
 
-            <Block flex={false} column margin={[0, 0, 0, '5%']}>
+            <Block flex={false}>
               <TouchableOpacity onPress={handlemessagepress}>
                 <ImageComponent name="message" height={100} width={100} />
                 <Text size={18} light center margin={[hp(1), 0, 0, 0]}>

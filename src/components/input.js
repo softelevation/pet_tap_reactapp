@@ -4,6 +4,7 @@ import {
   heightPercentageToDP,
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
+import {strictValidString} from '../utils/commonUtils';
 import Block from './Block';
 import Button from './CustomButton';
 import Text from './Text';
@@ -54,6 +55,8 @@ const Input = ({
   editable = true,
   center,
   placeholderTextColor,
+  Optional,
+  autoCapitalize,
   ...rest
 }) => {
   const styles = componentStyles();
@@ -70,6 +73,12 @@ const Input = ({
           style={styles.label}
           accent={error}>
           {label}
+          {strictValidString(Optional) && (
+            <Text grey bold size={20}>
+              {' '}
+              (Optional)
+            </Text>
+          )}
         </Text>
       ) : null}
     </Block>
@@ -136,7 +145,7 @@ const Input = ({
         style={inputStyles}
         secureTextEntry={isSecure}
         autoComplete="off"
-        autoCapitalize="none"
+        autoCapitalize={autoCapitalize ? autoCapitalize : 'none'}
         editable={editable}
         autoCorrect={false}
         keyboardType={inputType}

@@ -16,6 +16,7 @@ import * as yup from 'yup';
 import {Formik} from 'formik';
 import {light} from '../../components/theme/colors';
 import {TouchableOpacity} from 'react-native';
+import Checkbox from '../../components/checkbox';
 
 const PetTapForm = () => {
   const {navigate, goBack} = useNavigation();
@@ -85,15 +86,19 @@ const PetTapForm = () => {
           pets_breed: '',
           pets_address: '',
           owners_phone: '',
+          owners_email: '',
           notes_about_me: '',
           type: 'camera',
+          terms: false,
         }}
         onSubmit={onSubmit}
         validationSchema={yup.object().shape({
           pets_name: yup.string().min(1).required(),
           pets_breed: yup.string().min(1).required(),
           pets_address: yup.string().min(1).required(),
+          owners_email: yup.string().email(),
           notes_about_me: yup.string().min(1).required(),
+          terms: yup.bool().oneOf([true], 'Please Accept terms and conditions'),
           owners_phone: yup
             .string()
             .required('required')
@@ -122,6 +127,7 @@ const PetTapForm = () => {
                   onChangeText={handleChange('pets_name')}
                   onBlur={() => setFieldTouched('pets_name')}
                   error={touched.pets_name && errors.pets_name}
+                  autoCapitalize="words"
                 />
                 <Input
                   label="PETS BREED"
@@ -130,6 +136,7 @@ const PetTapForm = () => {
                   onChangeText={handleChange('pets_breed')}
                   onBlur={() => setFieldTouched('pets_breed')}
                   error={touched.pets_breed && errors.pets_breed}
+                  autoCapitalize="words"
                 />
                 <Block flex={false}>
                   <Text
@@ -212,6 +219,15 @@ const PetTapForm = () => {
                   maxLength={12}
                 />
                 <Input
+                  label="OWNERS EMAIL"
+                  Optional={'Optional'}
+                  placeholder="eg. doglover@provider.com"
+                  value={values.owners_email}
+                  onChangeText={handleChange('owners_email')}
+                  onBlur={() => setFieldTouched('owners_email')}
+                  error={touched.owners_email && errors.owners_email}
+                />
+                <Input
                   label="NOTES ABOUT ME"
                   placeholder="eg. I don't like other dogs . Keep  me enterained with a ball"
                   multiline={true}
@@ -222,6 +238,25 @@ const PetTapForm = () => {
                   onBlur={() => setFieldTouched('notes_about_me')}
                   error={touched.notes_about_me && errors.notes_about_me}
                 />
+                <Block margin={[hp(1), 0]} flex={false} row center>
+                  <Checkbox
+                    onChange={() => setFieldValue('terms', !values.terms)}
+                    checkboxStyle={{height: 20, width: 20}}
+                    label=""
+                    checked={values.terms}
+                  />
+                  <Text bold size={16}>
+                    I accept the{' '}
+                    <Text style={{textDecorationLine: 'underline'}} size={16}>
+                      terms and conditions{' '}
+                    </Text>
+                    <Text size={16}>and </Text>
+                    <Text style={{textDecorationLine: 'underline'}} size={16}>
+                      terms and conditions
+                    </Text>
+                  </Text>
+                </Block>
+
                 <Text margin={[hp(1), 0, 0]} uppercase bold size={20} secondary>
                   photo
                 </Text>

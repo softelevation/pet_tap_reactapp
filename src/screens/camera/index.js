@@ -24,6 +24,7 @@ const Camera = ({route}) => {
       pets_breed: values.pets_breed,
       pets_address: values.pets_address,
       owners_phone: `+61${values.owners_phone}`,
+      owners_email: values.owners_email,
       notes_about_me: values.notes_about_me,
       photo: data.data,
       lat: values.lat,
@@ -66,7 +67,7 @@ const Camera = ({route}) => {
         bold
         size={45}
         center>
-        drag to position
+        Preview
       </Text>
       <Block
         margin={[heightPercentageToDP(2), widthPercentageToDP(5)]}
@@ -79,16 +80,7 @@ const Camera = ({route}) => {
           padding={[heightPercentageToDP(3), widthPercentageToDP(13)]}
           color="#E9138C"
           row>
-          <Block flex={false} margin={[-heightPercentageToDP(0.2), 0, 0, 0]}>
-            <ImageComponent name="less" width={9} height={9} />
-          </Block>
-          <Text
-            margin={[0, 0, 0, widthPercentageToDP(2)]}
-            size={22}
-            bold
-            uppercase
-            cente
-            color="white">
+          <Text size={22} bold uppercase cente color="white">
             Back
           </Text>
         </CustomButton>
@@ -98,25 +90,9 @@ const Camera = ({route}) => {
           row
           padding={[heightPercentageToDP(3), widthPercentageToDP(13)]}
           color="#E9138C">
-          <Text
-            margin={[0, widthPercentageToDP(2), 0, 0]}
-            size={22}
-            bold
-            uppercase
-            center
-            color="white">
+          <Text size={22} bold uppercase center color="white">
             Next
           </Text>
-          <Block
-            style={[
-              {
-                transform: [{rotate: '180deg'}],
-              },
-            ]}
-            flex={false}
-            margin={[-heightPercentageToDP(0.2), 0, 0, 0]}>
-            <ImageComponent name="less" width={9} height={9} />
-          </Block>
         </CustomButton>
       </Block>
       {loader ? <LoadingView /> : null}

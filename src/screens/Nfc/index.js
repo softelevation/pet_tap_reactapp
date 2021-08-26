@@ -89,6 +89,7 @@ const Nfc = () => {
         } else {
           Alert.alert('PetTap', 'Card Sync Successfully');
         }
+        _cancel();
       }
     } catch (ex) {
       console.log('error =>', ex);

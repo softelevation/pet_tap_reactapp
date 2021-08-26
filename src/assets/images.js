@@ -9,4 +9,6 @@ export const images = {
   petbg: require('./icons/bgpet.png'),
   left_icon: require('./icons/left-arrow.png'),
   close_icon: require('./icons/cancel.png'),
+  check_icon: require('./icons/checkbox.png'),
+  uncheck_icon: require('./icons/stop.png'),
 };
