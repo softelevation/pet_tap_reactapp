@@ -9,12 +9,13 @@ import Block from './Block';
 import Button from './CustomButton';
 import Text from './Text';
 import {light} from './theme/colors';
-import {t1} from './theme/fontsize';
+import {bold, t1} from './theme/fontsize';
 
 const componentStyles = () => {
   return StyleSheet.create({
     label: {
       marginBottom: heightPercentageToDP(0.9),
+      fontFamily: bold,
     },
     input: {
       paddingVertical:
@@ -64,22 +65,23 @@ const Input = ({
   const renderLabel = () => (
     <Block flex={false}>
       {label ? (
-        <Text
-          bold
-          secondary={!error}
-          errorColor={errorText}
-          size={20}
-          center={center ? true : false}
-          style={styles.label}
-          accent={error}>
-          {label}
+        <Block row={Optional}>
+          <Text
+            secondary={!error}
+            errorColor={errorText}
+            size={20}
+            center={center ? true : false}
+            style={styles.label}
+            accent={error}>
+            {label}
+          </Text>
           {strictValidString(Optional) && (
-            <Text grey bold size={20}>
+            <Text margin={[-heightPercentageToDP(0.2), 0, 0]} grey size={16}>
               {' '}
               (Optional)
             </Text>
           )}
-        </Text>
+        </Block>
       ) : null}
     </Block>
   );

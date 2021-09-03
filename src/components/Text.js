@@ -35,7 +35,7 @@ const componentStyles = () => {
       fontFamily: GothamBold,
     },
     medium: {
-      fontWeight: '500',
+      // fontWeight: '500',
     },
     light: {
       fontFamily: lightFont,

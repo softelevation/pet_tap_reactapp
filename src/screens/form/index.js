@@ -15,7 +15,7 @@ import {GothamBold} from '../../components/theme/fontsize';
 import * as yup from 'yup';
 import {Formik} from 'formik';
 import {light} from '../../components/theme/colors';
-import {TouchableOpacity} from 'react-native';
+import {Linking, TouchableOpacity} from 'react-native';
 import Checkbox from '../../components/checkbox';
 
 const PetTapForm = () => {
@@ -238,7 +238,12 @@ const PetTapForm = () => {
                   onBlur={() => setFieldTouched('notes_about_me')}
                   error={touched.notes_about_me && errors.notes_about_me}
                 />
-                <Block margin={[hp(1), 0]} flex={false} row center>
+                <Block
+                  style={{width: wp(78)}}
+                  margin={[hp(1), 0]}
+                  flex={false}
+                  row
+                  center>
                   <Checkbox
                     onChange={() => setFieldValue('terms', !values.terms)}
                     checkboxStyle={{height: 20, width: 20}}
@@ -247,12 +252,24 @@ const PetTapForm = () => {
                   />
                   <Text bold size={16}>
                     I accept the{' '}
-                    <Text style={{textDecorationLine: 'underline'}} size={16}>
+                    <Text
+                      onPress={() =>
+                        Linking.openURL(
+                          'https://pettap.com.au/termsandconditions',
+                        )
+                      }
+                      style={{textDecorationLine: 'underline'}}
+                      size={16}>
                       terms and conditions{' '}
                     </Text>
                     <Text size={16}>and </Text>
-                    <Text style={{textDecorationLine: 'underline'}} size={16}>
-                      terms and conditions
+                    <Text
+                      onPress={() =>
+                        Linking.openURL('https://pettap.com.au/privacypolicy')
+                      }
+                      style={{textDecorationLine: 'underline'}}
+                      size={16}>
+                      Privacy Policy
                     </Text>
                   </Text>
                 </Block>
@@ -283,11 +300,7 @@ const PetTapForm = () => {
                   </Button>
                 </Block>
               </Block>
-              <Text
-                semibold
-                size={10}
-                center
-                margin={[heightPercentageToDP(6), 0, 0, 0]}>
+              <Text semibold size={10} center>
                 Pet Tap{' '}
                 <Text semibold size={8}>
                   © COPYRIGHT 2021 | ALL RIGHTS RESERVED
