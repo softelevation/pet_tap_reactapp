@@ -6,7 +6,7 @@ import {
   Dimensions,
   ScrollView,
   StyleSheet,
-  Linking
+  Linking,
 } from 'react-native';
 import {
   heightPercentageToDP,
@@ -19,12 +19,12 @@ const Home = () => {
   const {navigate} = useNavigation();
 
   const handlecontactpress = () => {
-    Linking.openURL("mailto:info@pettap.com.au")
-  }
+    Linking.openURL('mailto:info@pettap.com.au');
+  };
 
   const handlesitepress = () => {
-    Linking.openURL("https://www.pettap.com.au/")
-  }
+    Linking.openURL('https://www.pettap.com.au/');
+  };
 
   return (
     <ScrollView style={{backgroundColor: light.primary}} bounces={false}>
@@ -40,14 +40,28 @@ const Home = () => {
             create/update your tag
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handlesitepress} activeOpacity={0.7} style={styles.onlineButton}>
+        <TouchableOpacity
+          onPress={handlesitepress}
+          activeOpacity={0.7}
+          style={styles.onlineButton}>
           <Text uppercase secondary size={40} center bold>
             online store
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handlecontactpress} activeOpacity={0.7} style={styles.contactButton}>
+        <TouchableOpacity
+          onPress={handlecontactpress}
+          activeOpacity={0.7}
+          style={styles.contactButton}>
           <Text uppercase secondary size={40} center bold>
             contact
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigate(RouteConstants.PETTAPFORM)}
+          activeOpacity={0.7}
+          style={[styles.contactButton, {backgroundColor: '#E9138C'}]}>
+          <Text uppercase primary size={40} center bold>
+            Report Lost Pet
           </Text>
         </TouchableOpacity>
       </ImageBackground>
@@ -71,7 +85,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingBottom: 80,
+    paddingBottom: heightPercentageToDP(4),
   },
   onlineButton: {
     borderWidth: 4,
