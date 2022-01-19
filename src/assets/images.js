@@ -6,4 +6,9 @@ export const images = {
   address: require('./icons/address.png'),
   message: require('./icons/message.png'),
   logo: require('./icons/logo.png'),
+  petbg: require('./icons/bgpet.png'),
+  left_icon: require('./icons/left-arrow.png'),
+  close_icon: require('./icons/cancel.png'),
+  check_icon: require('./icons/checkbox.png'),
+  uncheck_icon: require('./icons/stop.png'),
 };

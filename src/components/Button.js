@@ -40,7 +40,7 @@ const componentStyles = () => {
       backgroundColor: '#fff',
       paddingVertical: t1 * 1.5,
       borderColor: light.darkColor,
-      borderWidth: 2,
+      borderWidth: 1.5,
       borderRadius: 0,
     },
   });

@@ -7,6 +7,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {sagaMiddleware, store, persistor} from './src/redux/store';
 import rootSaga from './src/redux/saga';
 import {Provider} from 'react-redux';
+import FlashMessage from 'react-native-flash-message';
 sagaMiddleware.run(rootSaga);
 const App = () => {
   const LinkingNavigation = async () => {
@@ -69,12 +70,15 @@ const App = () => {
     }
   };
   return (
-    <Provider store={store}>
-      <StatusBar barStyle="dark-content" />
-      <PersistGate loading={null} persistor={persistor}>
-        <Routes />
-      </PersistGate>
-    </Provider>
+    <>
+      <Provider store={store}>
+        <StatusBar barStyle="dark-content" />
+        <PersistGate loading={null} persistor={persistor}>
+          <Routes />
+        </PersistGate>
+      </Provider>
+      <FlashMessage position="top" />
+    </>
   );
 };
 

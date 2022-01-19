@@ -4,24 +4,26 @@ import {
   heightPercentageToDP,
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
+import {strictValidString} from '../utils/commonUtils';
 import Block from './Block';
 import Button from './CustomButton';
 import Text from './Text';
 import {light} from './theme/colors';
-import {t1} from './theme/fontsize';
+import {bold, t1} from './theme/fontsize';
 
 const componentStyles = () => {
   return StyleSheet.create({
     label: {
-      marginBottom: heightPercentageToDP(0.8),
+      marginBottom: heightPercentageToDP(0.9),
+      fontFamily: bold,
     },
     input: {
       paddingVertical:
         Platform.OS === 'ios'
           ? heightPercentageToDP(1.5)
-          : heightPercentageToDP(0.3),
+          : heightPercentageToDP(0.9),
       paddingHorizontal: widthPercentageToDP(3),
-      borderWidth: 2,
+      borderWidth: 1.5,
       borderColor: '#231F20',
       fontSize: 14,
       color: '#231F20',
@@ -54,6 +56,8 @@ const Input = ({
   editable = true,
   center,
   placeholderTextColor,
+  Optional,
+  autoCapitalize,
   ...rest
 }) => {
   const styles = componentStyles();
@@ -61,16 +65,23 @@ const Input = ({
   const renderLabel = () => (
     <Block flex={false}>
       {label ? (
-        <Text
-          bold
-          secondary={!error}
-          errorColor={errorText}
-          size={20}
-          center={center ? true : false}
-          style={styles.label}
-          accent={error}>
-          {label}
-        </Text>
+        <Block row={Optional}>
+          <Text
+            secondary={!error}
+            errorColor={errorText}
+            size={20}
+            center={center ? true : false}
+            style={styles.label}
+            accent={error}>
+            {label}
+          </Text>
+          {strictValidString(Optional) && (
+            <Text margin={[-heightPercentageToDP(0.2), 0, 0]} grey size={16}>
+              {' '}
+              (Optional)
+            </Text>
+          )}
+        </Block>
       ) : null}
     </Block>
   );
@@ -136,7 +147,7 @@ const Input = ({
         style={inputStyles}
         secureTextEntry={isSecure}
         autoComplete="off"
-        autoCapitalize="none"
+        autoCapitalize={autoCapitalize ? autoCapitalize : 'none'}
         editable={editable}
         autoCorrect={false}
         keyboardType={inputType}

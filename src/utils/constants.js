@@ -11,4 +11,5 @@ export const APIURL = {
   BaseURL: 'http://3.144.29.3:7000/',
   registered: 'users/registered',
   petDetails: 'users/pet-tag',
+  assignTag: 'users/assign-tag',
 };

@@ -57,6 +57,7 @@
 		6FFB5E6D438E47BA921411E6 /* GothamRounded-Book.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "GothamRounded-Book.otf"; path = "../src/assets/fonts/GothamRounded-Book.otf"; sourceTree = "<group>"; };
 		792BB90856EF287C1B654098 /* libPods-PetTap-PetTapTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PetTap-PetTapTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C1007719E5343D2A4EF9F47 /* GothamRounded-BookItalic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "GothamRounded-BookItalic.otf"; path = "../src/assets/fonts/GothamRounded-BookItalic.otf"; sourceTree = "<group>"; };
+		7C18B7E926CD1D25001B1D94 /* PetTap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PetTap.entitlements; path = PetTap/PetTap.entitlements; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = PetTap/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A12B88B935189371652C3ED8 /* Pods-PetTap-PetTapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetTap-PetTapTests.release.xcconfig"; path = "Target Support Files/Pods-PetTap-PetTapTests/Pods-PetTap-PetTapTests.release.xcconfig"; sourceTree = "<group>"; };
 		B11447544887E4724F516B70 /* libPods-PetTap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PetTap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +113,7 @@
 		13B07FAE1A68108700A75B9A /* PetTap */ = {
 			isa = PBXGroup;
 			children = (
+				7C18B7E926CD1D25001B1D94 /* PetTap.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -543,7 +545,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_ENTITLEMENTS = PetTap/PetTap.entitlements;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = J27PDK7ASV;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PetTap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -555,7 +559,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pettap;
 				PRODUCT_NAME = PetTap;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -569,7 +573,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_ENTITLEMENTS = PetTap/PetTap.entitlements;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = J27PDK7ASV;
 				INFOPLIST_FILE = PetTap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -580,7 +586,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pettap;
 				PRODUCT_NAME = PetTap;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

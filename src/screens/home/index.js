@@ -64,6 +64,16 @@ const Home = () => {
             Report Lost Pet
           </Text>
         </TouchableOpacity>
+        <Text
+          semibold
+          size={10}
+          center
+          margin={[heightPercentageToDP(6), 0, 0, 0]}>
+          Pet Tap{' '}
+          <Text semibold size={8}>
+            © COPYRIGHT 2021 | ALL RIGHTS RESERVED
+          </Text>
+        </Text>
       </ImageBackground>
     </ScrollView>
   );
