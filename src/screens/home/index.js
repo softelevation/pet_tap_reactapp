@@ -57,7 +57,7 @@ const Home = () => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigate(RouteConstants.PETTAPFORM)}
+          onPress={() => navigate(RouteConstants.REPORTLOSTPETSCREEN)}
           activeOpacity={0.7}
           style={[styles.contactButton, {backgroundColor: '#E9138C'}]}>
           <Text uppercase primary size={40} center bold>
@@ -68,7 +68,7 @@ const Home = () => {
           semibold
           size={10}
           center
-          margin={[heightPercentageToDP(6), 0, 0, 0]}>
+          margin={[heightPercentageToDP(2), 0, 0, 0]}>
           Pet Tap{' '}
           <Text semibold size={8}>
             © COPYRIGHT 2021 | ALL RIGHTS RESERVED

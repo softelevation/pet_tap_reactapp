@@ -12,6 +12,8 @@ import PetDetails from '../screens/pet-details';
 import Splash from '../screens/splash';
 import Camera from '../screens/camera';
 import {isReadyRef, navigationRef} from './NavigationService';
+import ReportLostPet from '../screens/report-lost';
+import SearchingPet from '../screens/report-lost/searching';
 
 const Stack = createNativeStackNavigator();
 const linking = {
@@ -48,8 +50,16 @@ function Routes() {
         <Stack.Screen name={RouteConstants.SUCCESS} component={Success} />
         <Stack.Screen name={RouteConstants.CAMERASCREEN} component={Camera} />
         <Stack.Screen
+          name={RouteConstants.REPORTLOSTPETSCREEN}
+          component={ReportLostPet}
+        />
+        <Stack.Screen
           name={RouteConstants.PET_DETAILS}
           component={PetDetails}
+        />
+        <Stack.Screen
+          name={RouteConstants.SEARCHINGPETSCREEN}
+          component={SearchingPet}
         />
       </Stack.Navigator>
     </NavigationContainer>

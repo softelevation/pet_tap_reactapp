@@ -10,7 +10,7 @@ const componentStyles = () => {
       borderRadius: 10,
       justifyContent: 'center',
       marginVertical: t1,
-      paddingVertical: t1 * 1.5,
+      paddingVertical: t1 * 2,
     },
     shadow: {
       shadowColor: '#000',

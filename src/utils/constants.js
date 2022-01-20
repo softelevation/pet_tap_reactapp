@@ -6,9 +6,11 @@ export const RouteConstants = {
   PET_DETAILS: 'PetDetails',
   SPLASH: 'Splash',
   CAMERASCREEN: 'Camera',
+  REPORTLOSTPETSCREEN: 'ReportLostPet',
+  SEARCHINGPETSCREEN: 'SearchingPet',
 };
 export const APIURL = {
-  BaseURL: 'http://3.144.29.3:7000/',
+  BaseURL: 'http://54.234.242.152:7000/',
   registered: 'users/registered',
   petDetails: 'users/pet-tag',
   assignTag: 'users/assign-tag',

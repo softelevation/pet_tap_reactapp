@@ -5,7 +5,14 @@ import {
   widthPercentageToDP,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import {Block, Text, Input, Button, ImageComponent} from '../../components';
+import {
+  Block,
+  Text,
+  Input,
+  Button,
+  ImageComponent,
+  CustomButton,
+} from '../../components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useNavigation} from '@react-navigation/native';
 import {RouteConstants} from '../../utils/constants';
@@ -15,7 +22,7 @@ import {GothamBold} from '../../components/theme/fontsize';
 import * as yup from 'yup';
 import {Formik} from 'formik';
 import {light} from '../../components/theme/colors';
-import {Linking, TouchableOpacity} from 'react-native';
+import {Linking} from 'react-native';
 import Checkbox from '../../components/checkbox';
 
 const PetTapForm = () => {
@@ -57,13 +64,11 @@ const PetTapForm = () => {
 
   return (
     <Block safearea primary>
-      <TouchableOpacity
+      <CustomButton
+        row
+        center={true}
         onPress={() => goBack()}
-        style={{
-          paddingHorizontal: widthPercentageToDP(3),
-          flexDirection: 'row',
-          alignItems: 'center',
-        }}>
+        padding={[0, widthPercentageToDP(3)]}>
         <ImageComponent
           name="left_icon"
           height={22}
@@ -77,7 +82,7 @@ const PetTapForm = () => {
           size={18}>
           Back
         </Text>
-      </TouchableOpacity>
+      </CustomButton>
       <Formik
         innerRef={formikRef}
         enableReinitialize
