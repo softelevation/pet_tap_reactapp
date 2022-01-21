@@ -29,7 +29,7 @@ const ReportLostPet = () => {
   const onSubmit = async values => {
     setLoading(true);
     const data = {
-      owners_phone: values.owners_phone,
+      owners_phone: `+61${values.owners_phone}`,
     };
     console.log(data, 'data');
     const res = await apiCall('POST', APIURL.userRequest, {data});
