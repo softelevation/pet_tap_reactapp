@@ -16,15 +16,33 @@ import {
 import {light} from '../../components/theme/colors';
 import * as yup from 'yup';
 import {Formik} from 'formik';
-import {RouteConstants} from '../../utils/constants';
+import {APIURL, RouteConstants} from '../../utils/constants';
+import {apiCall} from '../../redux/store/api-client';
+import {onDisplayNotification} from '../../utils/mobile-utils';
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const ReportLostPet = () => {
   const {goBack, navigate} = useNavigation();
+  const [loading, setLoading] = React.useState(false);
 
-  const onSubmit = () => {
-    navigate(RouteConstants.SEARCHINGPETSCREEN);
+  const onSubmit = async values => {
+    setLoading(true);
+    const data = {
+      owners_phone: values.owners_phone,
+    };
+    console.log(data, 'data');
+    const res = await apiCall('POST', APIURL.userRequest, {data});
+    console.log(res, 'res');
+    if (res.status === 1) {
+      setLoading(false);
+      navigate(RouteConstants.SEARCHINGPETSCREEN, {
+        data: res.data,
+      });
+    } else {
+      setLoading(false);
+      onDisplayNotification(res.message);
+    }
   };
   return (
     <Block safearea primary>
@@ -105,6 +123,7 @@ const ReportLostPet = () => {
                   maxLength={12}
                 />
                 <Button
+                  isLoading={loading}
                   disabled={!isValid || !dirty}
                   onPress={handleSubmit}
                   center

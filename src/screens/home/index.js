@@ -18,10 +18,6 @@ import {RouteConstants} from '../../utils/constants';
 const Home = () => {
   const {navigate} = useNavigation();
 
-  const handlecontactpress = () => {
-    Linking.openURL('mailto:info@pettap.com.au');
-  };
-
   const handlesitepress = () => {
     Linking.openURL('https://www.pettap.com.au/');
   };
@@ -46,14 +42,6 @@ const Home = () => {
           style={styles.onlineButton}>
           <Text uppercase secondary size={40} center bold>
             online store
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={handlecontactpress}
-          activeOpacity={0.7}
-          style={styles.contactButton}>
-          <Text uppercase secondary size={40} center bold>
-            contact
           </Text>
         </TouchableOpacity>
         <TouchableOpacity

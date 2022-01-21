@@ -14,4 +14,5 @@ export const APIURL = {
   registered: 'users/registered',
   petDetails: 'users/pet-tag',
   assignTag: 'users/assign-tag',
+  userRequest: 'users/request',
 };

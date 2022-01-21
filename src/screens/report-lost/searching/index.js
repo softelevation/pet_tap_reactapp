@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import React from 'react';
 import {ScrollView} from 'react-native';
 import {
@@ -10,18 +10,15 @@ import {
   Button,
   CustomButton,
   ImageComponent,
-  Input,
   Text,
 } from '../../../components';
 import {light} from '../../../components/theme/colors';
-import * as yup from 'yup';
-import {Formik} from 'formik';
-
-const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+import {viewFile} from '../../../utils/mobile-utils';
 const SearchingPet = () => {
-  const onSubmit = () => {};
   const {goBack} = useNavigation();
+  const {params} = useRoute();
+  const {data} = params;
+  console.log(data, 'data');
   return (
     <Block safearea primary>
       <CustomButton
@@ -83,6 +80,9 @@ const SearchingPet = () => {
             While You wait:
           </Text>
           <Button
+            onPress={() => {
+              viewFile(data.pdf, 'Lost pet Print poster');
+            }}
             style={{width: widthPercentageToDP(85), alignSelf: 'center'}}
             center
             middle

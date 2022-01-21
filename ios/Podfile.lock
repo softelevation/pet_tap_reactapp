@@ -333,6 +333,10 @@ PODS:
     - React-perflogger (= 0.64.2)
   - RNCAsyncStorage (1.15.6):
     - React-Core
+  - RNFileViewer (2.1.5):
+    - React-Core
+  - RNFS (2.18.0):
+    - React
   - RNImageCropPicker (0.36.2):
     - React-Core
     - React-RCTImage
@@ -402,6 +406,8 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - RNFileViewer (from `../node_modules/react-native-file-viewer`)
+  - RNFS (from `../node_modules/react-native-fs`)
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -483,6 +489,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNFileViewer:
+    :path: "../node_modules/react-native-file-viewer"
+  RNFS:
+    :path: "../node_modules/react-native-fs"
   RNImageCropPicker:
     :path: "../node_modules/react-native-image-crop-picker"
   RNScreens:
@@ -532,12 +542,14 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: a9904c6d0218fb9f8b19d6dd88607225927668f9
   ReactCommon: 149906e01aa51142707a10665185db879898e966
   RNCAsyncStorage: b7c6564ce662366dd44d0189456183ef7eda2d4d
+  RNFileViewer: ce7ca3ac370e18554d35d6355cffd7c30437c592
+  RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
   RNImageCropPicker: 35a3ceb837446fa11547704709bb22b5fac6d584
   RNScreens: 01ab149b5dd5c27f5ff26741b1d2bdf2cee1af35
   TOCropViewController: 3105367e808b7d3d886a74ff59bf4804e7d3ab38
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 65a837bb291ca262b0c2794381aede5c0bdf97e6
+PODFILE CHECKSUM: b54185495cd28ba6f1b83613d6a171a6cabe1409
 
 COCOAPODS: 1.11.2
